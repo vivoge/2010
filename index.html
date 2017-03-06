@@ -27,18 +27,24 @@
         </div>
     </div>
 </nav>
-<div class="container" ng:controller="mc">
-<span ng:bind="name"></span>
+
+<div class="container" ng-controller="mc">
+
+    <input type="text" ng-model="inp">
+    <button ng-click="aa()" ng-disabled="!inp">提交</button>
+
 </div>
 
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="./node_modules/jquery/dist/jquery.min.js" charset="utf-8"  type="text/javascript"></script>
+<script src="./node_modules/jquery/dist/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js" charset="utf-8"  type="text/javascript"></script>
-<script src="./node_modules/angular/angular.js" charset="utf-8"  type="text/javascript"></script>
-<script src="./1.js"></script>
+<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="./node_modules/angular/angular.js"></script>
+<script src="./index.js"></script>
+
+
 </body>
 </html>
 
