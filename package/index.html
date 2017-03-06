@@ -36,16 +36,15 @@
 
     <span time="3" >321</span>
 
-    <form action="" name="myForm" novalidate >
-        <div class="form-group">
-            <label for="email" class="control-label">邮箱：</label>
-            <input type="text" class="form-control" ng-model="email" id="email">
-        </div>
-        <div class="form-group">
-            <input type="button" value="提交" class="btn btn-default">
-        </div>
-    </form>
 
+    <!--表单-->
+    <form action="" name="myForm" novalidate="novalidate" >
+
+        <input type="text" name="myName" ng-model="username" required />
+
+    </form>
+    <pre>{{myForm.myName.$error['required']}}</pre>
+    <pre>{{myForm | json}}</pre>
 
 </div>
 
