@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="zh-CN" ng:app="app">
+<html lang="zh-CN" ng-app="app">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>中关村标准创新公共服务平台</title>
+    <title>公共服务平台</title>
 
     <!-- Bootstrap -->
     <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="./index.css" rel="stylesheet">
+    <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -20,18 +23,37 @@
 
 </head>
 <body>
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
 
-        </div>
-    </div>
-</nav>
 
 <div class="container" ng-controller="mc">
 
-    <input type="text" ng-model="inp">
-    <button ng-click="aa()" ng-disabled="!inp">提交</button>
+    <form class="form-group" action="" name="formSignUp" ng-submit="aa()" novalidate="novalidate">
+        <div class="form-group" ng-class="{'has-success':formSignUp.email.$valid}">
+            <label for="email" >邮箱：</label>
+
+            <input class="input-group" id="email" type="email" name="email" ng-model="email" ng-model-options="{updateOn:'blur'}" ng-class="{'error':formSignUp.email.$invalid && formSignUp.email.$touched }" required autocomplete="off"/>
+
+            <i class="fa fa-check " style="position: relative;left: 154px;top:-23px" aria-hidden="true" ng-show="formSignUp.email.$valid"></i>
+
+            <div class="height:50px"><span ng-if="formSignUp.email.$invalid && formSignUp.email.$touched ">您输入的email格式有误</span></div>
+
+        </div>
+
+        <div class="form-group">
+            <label for="">密码：</label>
+            <input class="input-group" type="password" name="password" ng-model="password" />
+        </div>
+
+        <div class="form-group">
+            <label for="">重复密码：</label>
+            <input class="input-group" type="repassword" name="repassword" compare="password" />
+        </div>
+
+        <button type="submit" ng-disabled="formSignUp.$invalid" class="btn btn-default">提交</button>
+
+    </form>
+
+
 
 </div>
 
