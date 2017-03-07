@@ -9,7 +9,7 @@
     <title>公共服务平台</title>
 
     <!-- Bootstrap -->
-    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="./index.css" rel="stylesheet">
     <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.css">
@@ -55,16 +55,28 @@
 
 
 
+
+    <span time="3" >321</span>
+
+
+    <!--表单-->
+    <form action="" name="myForm" novalidate="novalidate" >
+
+        <input type="text" name="myName" ng-model="username" required />
+
+    </form>
+    <pre>{{myForm.myName.$error['required']}}</pre>
+    <pre>{{myForm | json}}</pre>
+
 </div>
 
 
-
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="./node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="./node_modules/angular/angular.js"></script>
-<script src="./index.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../node_modules/angular/angular.js"></script>
+<script src="./js/www/index.js"></script>
 
 
 </body>
