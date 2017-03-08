@@ -53,10 +53,10 @@
 
         <div class="form-group">
             <label for="">重复密码：</label>
-            <pre>{{formSignUp.compassword.$valid | json}}</pre>
-            <input class="input-group" type="password" ng-model="userdata.repassword" name="compassword" compare="userdata.password" ng-minlength="6" required />
-            <div class="height:50px"><span ng-if="formSignUp.compassword.$error.compare">两次输入不一致</span></div>
-            <pre>{{formSignUp.compassword | json}}</pre>
+            <pre>{{formSignUp.rePassword.$valid | json}}</pre>
+            <input class="input-group" type="password" ng-model="userdata.rePassword" name="rePassword" compare="userdata.password" ng-minlength="6" required />
+            <div class="height:50px"><span ng-if="formSignUp.rePassword.$error.compare">两次输入不一致</span></div>
+            <!--<pre>{{formSignUp.rePassword | json}}</pre>-->
         </div>
 
 
