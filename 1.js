@@ -15,14 +15,14 @@ function fn(n){
             arr.push(num);
             continue;
         }
-        if(same(num)){
+        if(isNotSame(num)){
             arr.push(num)
         }else{
            i--;
         }
     }
 
-    function same(num){
+    function isNotSame(num){
         for(var i=0;i<arr.length;i++){
             if(arr[i] == num){
                 return false
@@ -36,4 +36,4 @@ function fn(n){
    return arr;
 }
 
-console.log(fn(9));
+console.log(fn(9),eval(fn(9)).length);

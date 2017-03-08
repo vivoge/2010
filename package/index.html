@@ -11,8 +11,8 @@
     <!-- Bootstrap -->
     <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="./index.css" rel="stylesheet">
-    <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../index.css" >
+    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,13 +25,14 @@
 <body>
 
 
-<div class="container" ng-controller="mc">
+<div class="container box" ng-controller="mc">
+
 
     <form class="form-group" action="" name="formSignUp" ng-submit="aa()" novalidate="novalidate">
         <div class="form-group" ng-class="{'has-success':formSignUp.email.$valid}">
             <label for="email" >邮箱：</label>
 
-            <input class="input-group" id="email" type="email" name="email" ng-model="email" ng-model-options="{updateOn:'blur'}" ng-class="{'error':formSignUp.email.$invalid && formSignUp.email.$touched }" required autocomplete="off"/>
+            <input class="input-group" id="email" type="email" name="email" ng-model="userdata.email" ng-model-options="{debounce:500}" ng-class="{'error':formSignUp.email.$invalid && formSignUp.email.$touched }" required autocomplete="off"/>
 
             <i class="fa fa-check " style="position: relative;left: 154px;top:-23px" aria-hidden="true" ng-show="formSignUp.email.$valid"></i>
 
@@ -41,13 +42,25 @@
 
         <div class="form-group">
             <label for="">密码：</label>
-            <input class="input-group" type="password" name="password" ng-model="password" />
+            <pre>{{formSignUp.password.$valid | json}}</pre>
+            <input class="input-group" type="password" name="password" ng-model="userdata.password" ng-minlength="6" required />
+            <div class="height:50px"><span ng-if="formSignUp.password.$error.minlength">您输入的密码少于6位</span></div>
+
+            <!--<pre>{{formSignUp.password | json}}</pre>-->
         </div>
+
+
 
         <div class="form-group">
             <label for="">重复密码：</label>
-            <input class="input-group" type="repassword" name="repassword" compare="password" />
+            <pre>{{formSignUp.compassword.$valid | json}}</pre>
+            <input class="input-group" type="password" ng-model="userdata.repassword" name="compassword" compare="userdata.password" ng-minlength="6" required />
+            <div class="height:50px"><span ng-if="formSignUp.compassword.$error.compare">两次输入不一致</span></div>
+            <pre>{{formSignUp.compassword | json}}</pre>
         </div>
+
+
+
 
         <button type="submit" ng-disabled="formSignUp.$invalid" class="btn btn-default">提交</button>
 
@@ -56,17 +69,8 @@
 
 
 
-    <span time="3" >321</span>
 
 
-    <!--表单-->
-    <form action="" name="myForm" novalidate="novalidate" >
-
-        <input type="text" name="myName" ng-model="username" required />
-
-    </form>
-    <pre>{{myForm.myName.$error['required']}}</pre>
-    <pre>{{myForm | json}}</pre>
 
 </div>
 
@@ -76,7 +80,7 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="../node_modules/angular/angular.js"></script>
-<script src="./js/www/index.js"></script>
+<script src="../index.js"></script>
 
 
 </body>
