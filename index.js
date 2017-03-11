@@ -65,43 +65,28 @@ app.filter('error',function(){
 
     };
     return function (input){
+
         return message[input];
 
     }
 });
 
-app.directive('unique',['$compile',function($compile){
+app.directive('unique',['$http',function($http){
     return{
         restrict:'AE',
         require:'ngModel',
         link:function(scope,element,attrs,ngModelCtrl){
-
+           scope.$watch(attrs['ngModel'],function(newval){
+               $http({
+                   method:'POST',
+                   headers:{'Content-Type':'application/json'},
+                   url:'http://localhost:8080/user/check',
+                   data:{username:newval}
+               }).success(function(data,status,headers,config){
+                   ngModelCtrl.$setValidity('unique',data.unique);
+                   console.log(data,status,headers,config);
+               })
+           })
         }
-
-    };
-    ]
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
+}]);
