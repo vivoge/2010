@@ -38,3 +38,70 @@ app.directive('compare',function(){
     }
 });
 
+app.directive('zgcerror',['$compile',function($compile){
+    return {
+        restrict:'AE',
+        require:'ngModel',
+        link:function(scope,element,attrs,ngModelCtrl){
+            var nscope = scope.$new(true);
+            nscope.hasError = function(){
+                return ngModelCtrl.$invalid && ngModelCtrl.$dirty
+            };
+            nscope.error = function(){
+                return ngModelCtrl.$error;
+            };
+
+            var teml = $compile('<p ng-repeat="(key,value) in error()" class="help-block" ng-show="hasError()">{{key | error}}</p>');
+            var tips = teml(nscope);
+            element.after(tips);
+        }
+    }
+}]);
+
+app.filter('error',function(){
+    var message = {
+        'minlength':'长度小于3位',
+        'email':'不是邮箱地址'
+
+    };
+    return function (input){
+        return message[input];
+
+    }
+});
+
+app.directive('unique',['$compile',function($compile){
+    return{
+        restrict:'AE',
+        require:'ngModel',
+        link:function(scope,element,attrs,ngModelCtrl){
+
+        }
+
+    };
+    ]
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

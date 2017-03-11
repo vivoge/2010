@@ -32,11 +32,11 @@
         <div class="form-group" ng-class="{'has-success':formSignUp.email.$valid}">
             <label for="email" >邮箱：</label>
 
-            <input class="input-group" id="email" type="email" name="email" ng-model="userdata.email" ng-model-options="{debounce:500}" ng-class="{'error':formSignUp.email.$invalid && formSignUp.email.$touched }" required autocomplete="off"/>
+            <input zgcerror class="input-group" id="email" type="email" name="email" ng-model="userdata.email" minlength="3" ng-model-options="{debounce:500}" ng-class="{'error':formSignUp.email.$invalid && formSignUp.email.$touched }" required autocomplete="off"/>
 
             <i class="fa fa-check " style="position: relative;left: 154px;top:-23px" aria-hidden="true" ng-show="formSignUp.email.$valid"></i>
 
-            <div class="height:50px"><span ng-if="formSignUp.email.$invalid && formSignUp.email.$touched ">您输入的email格式有误</span></div>
+            <!--<div class="height:50px"><span ng-if="formSignUp.email.$invalid && formSignUp.email.$touched ">您输入的email格式有误</span></div>-->
 
         </div>
 
@@ -54,8 +54,9 @@
         <div class="form-group">
             <label for="">重复密码：</label>
             <pre>{{formSignUp.rePassword.$valid | json}}</pre>
-            <input class="input-group" type="password" ng-model="userdata.rePassword" name="rePassword" compare="userdata.password" ng-minlength="6" required />
+            <input zgcerror class="input-group" type="password" ng-model="userdata.rePassword" name="rePassword" compare="userdata.password" ng-minlength="6" required />
             <div class="height:50px"><span ng-if="formSignUp.rePassword.$error.compare">两次输入不一致</span></div>
+
             <!--<pre>{{formSignUp.rePassword | json}}</pre>-->
         </div>
 
@@ -66,6 +67,20 @@
 
     </form>
 
+<!--远程验证-->
+    <form action="" name="signincheck" novalidate="novalidate">
+        <div class="form-group">
+            <p>远程验证</p>
+            <label for="username" >用户名：</label>
+            <input unique type="text" id="username" ng-model="username" autocomplete="off"/>
+        </div>
+
+
+
+
+    </form>
+
+<!--远程验证-->
 
 
 
