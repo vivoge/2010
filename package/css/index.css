@@ -1,0 +1,20 @@
+.error{
+    border-color: red;
+}
+
+.box{
+    width: 400px;
+}
+
+.title{
+    width:100px;
+    height:30px;
+    border:1px solid black;
+    background-color: #00b3ee;
+}
+.content{
+    width:100px;
+    height:200px;
+    border:1px solid black;
+    background-color: #9d9d9d;
+}
